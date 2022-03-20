@@ -1,17 +1,22 @@
 package lab1
 
-data class Book(val number: Int, val name: String, val authors: String, val yearBook: Int) {}
+data class Book( val name: String, val authors: String, val yearBook: Int) {}
 
 fun parserBooks(books: String): List<Book>? {
     if (books.isEmpty()) { return null }
     val splitString = books.split('\n')
     val listBooks = mutableListOf<Book>()
+    var perem: String
     for (str in splitString) {
-        val number = str.substringBefore('.').toInt()
-        val name = str.substringBefore("//").substringAfter('.')
-        val author = str.substringBeforeLast("//").substringAfter("//")
-        val yearBook = str.substringAfterLast("//").toInt()
-        val fullBook = Book(number, name, author, yearBook)
+        perem = str
+        //val number = str.substringBefore('.').toInt()
+        perem = perem.substringAfter('.')
+        val name = perem.substringBefore("//").trim()
+        perem = perem.substringAfter("//")
+        val author = perem.substringBeforeLast("//").trim()
+        perem = perem.substringAfter("//").trim()
+        val yearBook = perem.toInt()
+        val fullBook = Book( name, author, yearBook)
         listBooks.add(fullBook)
     }
     return listBooks
