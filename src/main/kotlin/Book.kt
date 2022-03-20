@@ -10,7 +10,7 @@ fun parserBooks(books: String): List<Book>? {
         val number = str.substringBefore('.').toInt()
         val name = str.substringBefore("//").substringAfter('.')
         val author = str.substringBeforeLast("//").substringAfter("//")
-        val yearBook = str.substringAfterLast("//").substringBefore("/n").toInt()
+        val yearBook = str.substringAfterLast("//").toInt()
         val fullBook = Book(number, name, author, yearBook)
         listBooks.add(fullBook)
     }
