@@ -4,7 +4,7 @@ fun main() {
     val books = """1. Отцы и дети // И.С.Тургенев // 1862
             2. Горе от ума // А.С.Грибоедов // 1825
             3. Война и мир // Л.Н.Толстой // 1867
-            4. Евгений Онегин // А.С.Пушкин // 1833""".trimIndent()
+            4. Евгений Онегин // А.С.Пушкин // 1833"""
     val listBooks: List<Book>? = parserBooks(books)
     if (listBooks == null) {
         println("List of the books is empty")
