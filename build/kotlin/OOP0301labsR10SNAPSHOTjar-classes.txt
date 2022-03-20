@@ -1,1 +1,1 @@
-C:\Users\Анна Рудницкая\IdeaProjects\OOP_0301_labs_R\build\classes\kotlin\main\lab1\Book.class;C:\Users\Анна Рудницкая\IdeaProjects\OOP_0301_labs_R\build\classes\kotlin\main\lab1\BookKt.class;C:\Users\Анна Рудницкая\IdeaProjects\OOP_0301_labs_R\build\classes\kotlin\main\lab1\MainKt.class
+C:\Users\allit\IdeaProjects\OOP_0301_labs_R\build\classes\kotlin\main\lab1\Book.class;C:\Users\allit\IdeaProjects\OOP_0301_labs_R\build\classes\kotlin\main\lab1\BookKt.class;C:\Users\allit\IdeaProjects\OOP_0301_labs_R\build\classes\kotlin\main\lab1\MainKt.class

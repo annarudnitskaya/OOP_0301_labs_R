@@ -1,1 +1,0 @@
-C:\Users\Анна Рудницкая\IdeaProjects\OOP_0301_labs_R\src\test\kotlin\BookKtTest.kt
