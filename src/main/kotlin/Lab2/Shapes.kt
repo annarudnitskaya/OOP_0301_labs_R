@@ -1,6 +1,6 @@
 package lab1.Lab2
 
-data class Color // TODO
+data class Color :  Shape2d ()
 
 interface Shape2d {
     fun calcArea(): Double
