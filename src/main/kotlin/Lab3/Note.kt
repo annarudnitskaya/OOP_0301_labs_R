@@ -17,6 +17,13 @@ sealed class Note(open val title: String, open val date: LocalDate, open val con
 
     }
 
+    class Url(override val title: String, override val date: LocalDate, override val content: String): Note(title, date, content){
+        override fun toString(): String {
+            return "UrlNote(title='$title', date=$date, url='$content')"
+        }
+
+    }
+
 //    class Link{
 //
 //    }
