@@ -1,7 +1,6 @@
 package Lab3
 
 import java.time.LocalDate
-//import java.time.LocalDateTime
 
 sealed class Note(open val title: String, open val date: LocalDate, open val content: String) {
     class TextNote(override val title: String, override val date: LocalDate, override val content: String): Note(title, date, content) {
@@ -17,14 +16,11 @@ sealed class Note(open val title: String, open val date: LocalDate, open val con
 
     }
 
-    class Url(override val title: String, override val date: LocalDate, override val content: String): Note(title, date, content){
+    class Link(override val title: String, override val date: LocalDate, override val content: String): Note(title, date, content){
         override fun toString(): String {
             return "UrlNote(title='$title', date=$date, url='$content')"
         }
 
     }
-
-//    class Link{
-//
-//    }
 }
+
