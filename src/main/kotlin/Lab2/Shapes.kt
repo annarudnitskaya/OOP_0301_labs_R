@@ -24,7 +24,7 @@ data class Rectangle(private val side1: Double, private val side2: Double, overr
 }
 
 data class Triangle(private val side1: Double, private val side2: Double, private val side3: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
-    private val halfPerimeter = side1 + side2 + side3
+    private val halfPerimeter = (side1 + side2 + side3)/2
     override fun calcArea(): Double {
         if (side1 <= 0 || side2 <= 0 || side3 <= 0) throw IllegalArgumentException("Sides can't be negative")
         if (side1 + side2 < side3 || side1 + side3 < side2 || side3 + side2 < side1) throw IllegalArgumentException("There is no such triangle")
