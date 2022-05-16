@@ -21,10 +21,8 @@ internal class BookKtTest {
     @Test
     fun `test correct parse fun for empty string`() {
         val testBooks = ""
-        val exception = assertFailsWith<IllegalArgumentException>(
-            block = { parserBooks(testBooks) }
-        )
-        assertEquals(exception.message, "The books string is empty")
+        val testBookList: List<Book>?= parserBooks(testBooks)
+        assertEquals(null,testBookList)
     }
 
     @Test
@@ -70,10 +68,10 @@ internal class BookKtTest {
             3. War and Peace // Leo Tolstoy // 1867
             4. Eugene Onegin // Alexander Pushkin // 1833"""
         val testBookList: List<Book>?= parserBooks(testBooks)
-        //assertEquals(
-           // listOf(Book("Woe from Wit", "A. S. Griboedov", 1825)),
-           // oldestBook(testBookList!!)
-        //)
+        assertEquals(
+            Book("Woe from Wit", "A. S. Griboedov", 1825),
+            oldestBook(testBookList!!)
+        )
     }
 
     @Test
@@ -83,10 +81,10 @@ internal class BookKtTest {
             3. War and Peace // Leo Tolstoy // 1867
             4. Eugene Onegin // Alexander Pushkin // 1833"""
         val testBookList = parserBooks(testBooks)
-        assertEquals("War and Peace", youngestBook(testBookList!!)!!.name)
-        assertEquals("Leo Tolstoy", youngestBook(testBookList!!)!!.authors)
-        assertEquals(1867, youngestBook(testBookList!!)!!.yearBook)
-
+        assertEquals(
+            Book("War and Peace", "Leo Tolstoy", 1867),
+            youngestBook(testBookList!!)
+        )
     }
 
     @Test
@@ -96,9 +94,10 @@ internal class BookKtTest {
             3. War and Peace // Leo Tolstoy // 1867
             4. Eugene Onegin // Alexander Pushkin // 1833"""
         val testBookList = parserBooks(testBooks)
-        assertEquals("Fathers and Sons", longestNameBook(testBookList!!)!!.name)
-        assertEquals("Ivan Turgenev", longestNameBook(testBookList!!)!!.authors)
-        assertEquals(1862, longestNameBook(testBookList!!)!!.yearBook)
+        assertEquals(
+            Book("Fathers and Sons", "Ivan Turgenev", 1862),
+            longestNameBook(testBookList!!)
+        )
     }
 
     @Test
@@ -108,8 +107,9 @@ internal class BookKtTest {
             3. War and Peace // Leo Tolstoy // 1867
             4. Eugene Onegin // Alexander Pushkin // 1833"""
         val testBookList = parserBooks(testBooks)
-        assertEquals("Woe from Wit", shortestNameBook(testBookList!!)!!.name)
-        assertEquals("A. S. Griboedov", shortestNameBook(testBookList!!)!!.authors)
-        assertEquals(1825, shortestNameBook(testBookList)!!.yearBook)
+        assertEquals(
+            Book("Woe from Wit", "A. S. Griboedov", 1825),
+            shortestNameBook(testBookList!!)
+        )
     }
 }

@@ -167,6 +167,6 @@ internal class ShapeCollectorTest {
         shapse.addFigure(circle2)
         shapse.addFigure(triangle)
         assertEquals(3, shapse.getSizeList())
-        assertEquals(listOf(circle, circle2), shapse.shapesByType("Circle"))
+        assertEquals(listOf(circle, circle2), shapse.shapesByType(Circle::class.java))
     }
 }
