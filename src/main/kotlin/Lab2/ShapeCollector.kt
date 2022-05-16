@@ -1,5 +1,7 @@
 package lab1.Lab2
 
+import kotlin.reflect.KClass
+
 class ShapeCollector {
     private val listFigure: MutableList<ColoredShape2d> = mutableListOf()
 
@@ -40,8 +42,8 @@ class ShapeCollector {
         return sumArea
     }
 
-    fun findByBorderColor(_borderColor: Color): List<ColoredShape2d>? {
-        if (listFigure.isEmpty()) return null
+    fun findByBorderColor(_borderColor: Color): List<ColoredShape2d> {
+        if (listFigure.isEmpty()) return emptyList()
         val listFigureByBorderColor: MutableList<ColoredShape2d> = mutableListOf()
         for (figure in listFigure) {
             if (figure.borderColor == _borderColor) listFigureByBorderColor.add(figure)
@@ -49,8 +51,8 @@ class ShapeCollector {
         return listFigureByBorderColor
     }
 
-    fun findByFillColor(_fillColor: Color): List<ColoredShape2d>? {
-        if (listFigure.isEmpty()) return null
+    fun findByFillColor(_fillColor: Color): List<ColoredShape2d> {
+        if (listFigure.isEmpty()) return emptyList()
         val listFigureByFillColor: MutableList<ColoredShape2d> = mutableListOf()
         for (figure in listFigure) {
             if (figure.fillColor == _fillColor) listFigureByFillColor.add(figure)
@@ -58,8 +60,8 @@ class ShapeCollector {
         return listFigureByFillColor
     }
 
-    fun getListFigure(): List<ColoredShape2d>? {
-        if (listFigure.isEmpty()) return null
+    fun getListFigure(): List<ColoredShape2d> {
+        if (listFigure.isEmpty()) return emptyList()
         return listFigure
     }
 
@@ -68,22 +70,17 @@ class ShapeCollector {
         return listFigure.size
     }
 
-    fun groupedByBorderColor(): Map<Color, List<ColoredShape2d>>? {
-        if (listFigure.isEmpty()) return null
+    fun groupedByBorderColor(): Map<Color, List<ColoredShape2d>> {
+        if (listFigure.isEmpty()) return emptyMap()
         return listFigure.groupBy { it.borderColor }
     }
 
-    fun groupedByFillColor(): Map<Color, List<ColoredShape2d>>? {
-        if (listFigure.isEmpty()) return null
+    fun groupedByFillColor(): Map<Color, List<ColoredShape2d>> {
+        if (listFigure.isEmpty()) return emptyMap()
         return listFigure.groupBy { it.fillColor }
     }
 
-    fun shapesByType(type: String): List<ColoredShape2d>? {
-        if (listFigure.isEmpty()) return null
-        val listFigureByType: MutableList<ColoredShape2d> = mutableListOf()
-        for (figure in listFigure) {
-            if (figure::class.simpleName == type) listFigureByType.add(figure)
-        }
-        return listFigureByType
+    fun shapesByType(type: Class<Circle>): List<ColoredShape2d> {
+        return listFigure.filterIsInstance(type)
     }
 }

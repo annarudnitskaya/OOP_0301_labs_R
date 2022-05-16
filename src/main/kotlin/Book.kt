@@ -4,9 +4,7 @@ data class Book(val name: String, val authors: String, val yearBook: Int) {}
 
 //parser of books
 fun parserBooks(books: String): List<Book>? {
-    if (books.isEmpty()) {
-        throw IllegalArgumentException("The books string is empty")
-    }
+    if (books.isEmpty()) return null
     val splitString = books.split('\n')
     val listBooks = mutableListOf<Book>()
     var perem: String

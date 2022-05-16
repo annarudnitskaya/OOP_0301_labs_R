@@ -31,5 +31,5 @@ fun main() {
     println("Shapes with color2 in fill color = ${allShapes.findByFillColor(color2)}")
     println("Shapes grouped by border color = ${allShapes.groupedByBorderColor()}")
     println("Shapes grouped by fill color = ${allShapes.groupedByFillColor()}")
-    println("Shapes of a certain type = ${allShapes.shapesByType("Square")}")
+    println("Shapes of a certain type = ${allShapes.shapesByType(Circle::class.java)}")
 }
