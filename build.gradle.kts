@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
     application
 }
 
-group = "me.user"
+group = "ru.eltech.sapr"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -13,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     testImplementation(kotlin("test"))
 }
 
@@ -27,14 +29,3 @@ tasks.withType<KotlinCompile> {
 application {
     mainClass.set("MainKt")
 }
-
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-/*test {
-    useJUnitPlatform()
-}*/
