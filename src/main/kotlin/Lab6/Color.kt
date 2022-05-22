@@ -1,5 +1,8 @@
 package lab1.Lab6
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Color(
     val red: Int,
     val green: Int,
