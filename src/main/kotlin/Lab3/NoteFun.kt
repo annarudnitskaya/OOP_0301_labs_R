@@ -6,56 +6,87 @@ import java.time.LocalDate
 class NoteFun {
     private val listNotes: MutableList<Note> = mutableListOf()
 
-        /*fun add(note: Note){
-            listNotes.add(Note)
+        fun add(note: Note){
+            listNotes.add(note)
         }
 
         fun getAllNotes(): List<Note>{
-            return notes
-        }*/
-        /*fun getAllTextNotes(): List<Note.TextNote>{
+                if (listNotes.isEmpty()) return emptyList()
+                return listNotes
 
         }
-        fun getAllTasks(): List<Note.Task>{
-
-        }
-        fun getAllLinks(): List<Note.Link>{
-
-        }
-
-        fun createTextNote(title: String, date: LocalDate, content: String): Note.TextNote{
-            val text = Note.TextNote(title, date, content)
-            notes.add(text)
-            return text
+        fun getAllTextNotes(): List<Note.TextNote>{
+            if (listNotes.isEmpty()) throw Exception("Empty")
+            else {
+                val textNoteList: MutableList<Note.TextNote> = mutableListOf()
+                for (note in listNotes) {
+                    if (note.javaClass.simpleName == "TextNote") textNoteList.add(note as Note.TextNote)
+                }
+                return textNoteList
+            }
         }
 
-        fun createTask(title: String, date: LocalDate, task: String, deadline: LocalDate): Note.Task{
-
+    fun getAllTasks(): List<Note.Task> {
+        if (listNotes.isEmpty()) throw Exception("Empty")
+        else {
+            val taskList: MutableList<Note.Task> = mutableListOf()
+            for (note in listNotes) {
+                if (note.javaClass.simpleName == "Task") taskList.add(note as Note.Task)
+            }
+            return taskList
         }
 
-        fun createLink(title: String,date: LocalDate, content: String): Note.Link{
+    }
 
+    fun getAllLinks(): List<Note.Link> {
+        if (listNotes.isEmpty()) throw Exception("No entries added")
+        else {
+            val linkList: MutableList<Note.Link> = mutableListOf()
+            for (note in listNotes) {
+                if (note.javaClass.simpleName == "Link") linkList.add(note as Note.Link)
+            }
+            return linkList
         }
 
-        fun removeNote(note: Note){
+    }
 
+    fun createTextNote(title: String, date: LocalDate, content: String): Note.TextNote{
+        val text = Note.TextNote(title, date, content)
+        listNotes.add(text)
+        return text
+    }
+
+    fun createTask(title: String, date: LocalDate, content: String, deadline: LocalDate): Note.Task{
+        val task = Note.Task(title, date, content, deadline)
+        listNotes.add(task)
+        return task
+    }
+
+    fun createLink(title: String, date: LocalDate, content: String): Note.Link{
+        val link = Note.Link(title, date, content)
+        listNotes.add(link)
+        return link
+    }
+
+    fun findTitle(title: String): List<Note>{
+        val notesByTitle: MutableList<Note> = mutableListOf()
+        for (note in listNotes) {
+            if (note.title == title) notesByTitle.add(note)
         }
+        return notesByTitle
+    }
 
-       fun findType(type: Class<Any>): List<Note>{
+   fun getSortedTitle():List<Note> {
+       if (listNotes.isEmpty()) throw Exception("Empty")
+       else return listNotes.sortedBy { it.title }
+   }
 
-        }
-        fun findTitle(title: String): List<Note>{
+    fun getSortedDate(): List<Note>{
+        if (listNotes.isEmpty()) throw Exception("Empty")
+        else return listNotes.sortedBy { it.date }
+    }
 
-        }
+    //fun removeNote(note: Note){}
 
-       fun getSortedTitle() {
-
-            return this.notes.sortedBy { it.title }
-        }
-        fun getSortedDate(): List<Note>{
-
-        }
-
-
-*/
+    //fun findType(type: Class<Any>): List<Note>{    }
 }

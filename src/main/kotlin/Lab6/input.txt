@@ -1,0 +1,30 @@
+[
+    {
+        "type": "Lab6.Square",
+        "borderColor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1
+        },
+        "fillColor": {
+            "red": 255,
+            "green": 255,
+            "blue": 255
+        },
+        "side": 5.0
+    },
+    {
+        "type": "Lab6.Circle",
+        "borderColor": {
+            "red": 255,
+            "green": 255,
+            "blue": 255
+        },
+        "fillColor": {
+            "red": 255,
+            "green": 255,
+            "blue": 255
+        },
+        "rad": 1.0
+    }
+]

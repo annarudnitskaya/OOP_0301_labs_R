@@ -5,6 +5,15 @@ import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 import kotlin.math.sqrt
 
+val serializersModule = SerializersModule {
+    polymorphic(ColoredShape2d::class) {
+        subclass(Circle::class)
+        subclass(Square::class)
+        subclass(Rectangle::class)
+        subclass(Triangle::class)
+    }
+}
+
 @Serializable
 @SerialName("Lab6.Circle")
 data class Circle(private val rad: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
