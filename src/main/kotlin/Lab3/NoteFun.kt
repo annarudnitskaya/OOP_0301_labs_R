@@ -86,7 +86,11 @@ class NoteFun {
         else return listNotes.sortedBy { it.date }
     }
 
-    //fun removeNote(note: Note){}
+    fun removeNote(note: Note){
+        listNotes.remove(note)
+    }
 
-    //fun findType(type: Class<Any>): List<Note>{    }
+    fun findType(type: Class<Note.Link>): List<Note> {
+        return listNotes.filterIsInstance(type)
+    }
 }

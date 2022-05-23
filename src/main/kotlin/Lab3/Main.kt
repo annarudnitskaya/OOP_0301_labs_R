@@ -19,5 +19,7 @@ fun main() {
     println("All Tasks: ${notes.getAllTasks()}")
     println("Sorted by date: ${notes.getSortedDate()}")
     println("Sorted by title: ${notes.getSortedTitle()}")
+    println("Delete TextNotes: ${notes.removeNote(notes.getAllNotes()[1])}")
+    println("Find of tipe link: ${notes.findType(Note.Link::class.java)}")
 
 }
