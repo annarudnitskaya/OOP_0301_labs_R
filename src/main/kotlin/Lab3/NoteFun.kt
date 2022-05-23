@@ -16,36 +16,24 @@ class NoteFun {
 
         }
         fun getAllTextNotes(): List<Note.TextNote>{
-            if (listNotes.isEmpty()) throw Exception("Empty")
+            if (listNotes.isEmpty()) return emptyList()
             else {
-                val textNoteList: MutableList<Note.TextNote> = mutableListOf()
-                for (note in listNotes) {
-                    if (note.javaClass.simpleName == "TextNote") textNoteList.add(note as Note.TextNote)
-                }
-                return textNoteList
+                return listNotes.filterIsInstance(Note.TextNote::class.java)
             }
         }
 
     fun getAllTasks(): List<Note.Task> {
-        if (listNotes.isEmpty()) throw Exception("Empty")
+        if (listNotes.isEmpty()) return emptyList()
         else {
-            val taskList: MutableList<Note.Task> = mutableListOf()
-            for (note in listNotes) {
-                if (note.javaClass.simpleName == "Task") taskList.add(note as Note.Task)
-            }
-            return taskList
+            return listNotes.filterIsInstance(Note.Task::class.java)
         }
 
     }
 
     fun getAllLinks(): List<Note.Link> {
-        if (listNotes.isEmpty()) throw Exception("No entries added")
+        if (listNotes.isEmpty()) return emptyList()
         else {
-            val linkList: MutableList<Note.Link> = mutableListOf()
-            for (note in listNotes) {
-                if (note.javaClass.simpleName == "Link") linkList.add(note as Note.Link)
-            }
-            return linkList
+            return listNotes.filterIsInstance(Note.Link::class.java)
         }
 
     }
@@ -77,12 +65,12 @@ class NoteFun {
     }
 
    fun getSortedTitle():List<Note> {
-       if (listNotes.isEmpty()) throw Exception("Empty")
+       if (listNotes.isEmpty()) return emptyList()
        else return listNotes.sortedBy { it.title }
    }
 
     fun getSortedDate(): List<Note>{
-        if (listNotes.isEmpty()) throw Exception("Empty")
+        if (listNotes.isEmpty()) return emptyList()
         else return listNotes.sortedBy { it.date }
     }
 
@@ -90,7 +78,7 @@ class NoteFun {
         listNotes.remove(note)
     }
 
-    fun findType(type: Class<Note.Link>): List<Note> {
+    fun findType(type: Class<out Note>): List<Note> {
         return listNotes.filterIsInstance(type)
     }
 }

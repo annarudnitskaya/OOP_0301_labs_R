@@ -7,7 +7,7 @@ fun main() {
     val notes = NoteFun()
     notes.createTask("Task Note", LocalDate.of(2022,4,24),"Do homework", LocalDate.of(2022, 5, 8))
     notes.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
-    notes.createLink("Link Note", LocalDate.of(2022,4,24),"https://github.com/annarudnitskaya/OOP_0301_labs_R")
+    notes.createLink("Link Note", LocalDate.of(2022,3,24),"https://github.com/annarudnitskaya/OOP_0301_labs_R")
     notes.createTextNote("Text Note", LocalDate.of(2022,4,24),"Just a text")
 
 
