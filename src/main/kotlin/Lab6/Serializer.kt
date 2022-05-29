@@ -1,5 +1,5 @@
 package lab1.Lab6
-import lab1.Lab2.Interfaces
+
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -9,7 +9,7 @@ class Serializer {
 
     private val json = Json {
         prettyPrint = true
-        serializersModule = libSerializer
+//        serializersModule = libSerializer
     }
 
     fun serialization(list: List<ColoredShape2d>): String {

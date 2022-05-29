@@ -9,7 +9,8 @@ fun main() {
     val color1 = Color(255, 255, 255, 60)
     val color2 = Color(0, 0, 0, 40)
 
-    val file = forFile("src/main/kotlin/Lab6/input.txt", "src/main/kotlin/Lab6/output.txt")
+
+    val file = forFile("src/main/kotlin/lab1/Lab6/input.txt", "src/main/kotlin/lab1/Lab6/output.txt")
     val workSerializer = Serializer()
     println("\nObjects list from file:")
     val workList = workSerializer.deserialization(file.read()).toMutableList()
