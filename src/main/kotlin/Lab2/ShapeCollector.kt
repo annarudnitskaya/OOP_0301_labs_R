@@ -2,37 +2,29 @@ package lab1.Lab2
 
 import kotlin.reflect.KClass
 
-class ShapeCollector {
-    private val listFigure: MutableList<ColoredShape2d> = mutableListOf()
+class ShapeCollector<T: ColoredShape2d>(_listFigure: List<T>) {
+    private val listFigure: MutableList<T>
 
-    fun addFigure(figure: ColoredShape2d) {
+    init{
+        listFigure = _listFigure.toMutableList()
+    }
+
+    fun addFigure(figure: T) {
         listFigure.add(figure)
     }
 
-    fun maxAreaF(): ColoredShape2d? {
-        if (listFigure.isEmpty()) return null
-        var figureMaxArea: ColoredShape2d? = null
-        var maxArea: Double = Double.MIN_VALUE
-        for (figure in listFigure) {
-            if (figure.calcArea() > maxArea) {
-                maxArea = figure.calcArea()
-                figureMaxArea = figure
-            }
-        }
-        return figureMaxArea
+    fun maxAreaF(): List<T> {
+        return if (listFigure.isNotEmpty()){
+            val maxArea = listFigure.maxOf {it.calcArea()}
+            listFigure.filter {it.calcArea() == maxArea}
+        } else emptyList()
     }
 
-    fun minAreaF(): ColoredShape2d? {
-        if (listFigure.isEmpty()) return null
-        var figureMinArea: ColoredShape2d? = null
-        var minArea: Double = Double.MAX_VALUE
-        for (figure in listFigure) {
-            if (figure.calcArea() < minArea) {
-                minArea = figure.calcArea()
-                figureMinArea = figure
-            }
-        }
-        return figureMinArea
+    fun minAreaF(): List<T> {
+        return if (listFigure.isNotEmpty()){
+            val minArea = listFigure.minOf {it.calcArea()}
+            listFigure.filter {it.calcArea() == minArea}
+        } else emptyList()
     }
 
     fun sumOfAreas(): Double? {
@@ -51,16 +43,16 @@ class ShapeCollector {
         return listFigureByBorderColor
     }
 
-    fun findByFillColor(_fillColor: Color): List<ColoredShape2d> {
-        if (listFigure.isEmpty()) return emptyList()
-        val listFigureByFillColor: MutableList<ColoredShape2d> = mutableListOf()
+    fun findByFillColor(_fillColor: Color): MutableList<ColoredShape2d>  {
+        val listFigureByFillColor: MutableList<T> = mutableListOf()
         for (figure in listFigure) {
             if (figure.fillColor == _fillColor) listFigureByFillColor.add(figure)
         }
-        return listFigureByFillColor
+        return listFigureByFillColor.toMutableList()
     }
 
-    fun getListFigure(): List<ColoredShape2d> {
+
+    fun getListFigure(): List<T> {
         if (listFigure.isEmpty()) return emptyList()
         return listFigure
     }
@@ -70,17 +62,27 @@ class ShapeCollector {
         return listFigure.size
     }
 
-    fun groupedByBorderColor(): Map<Color, List<ColoredShape2d>> {
+    fun groupedByBorderColor(): Map<Color, List<T>> {
         if (listFigure.isEmpty()) return emptyMap()
         return listFigure.groupBy { it.borderColor }
     }
 
-    fun groupedByFillColor(): Map<Color, List<ColoredShape2d>> {
+    fun groupedByFillColor(): Map<Color, List<T>> {
         if (listFigure.isEmpty()) return emptyMap()
         return listFigure.groupBy { it.fillColor }
     }
 
-    fun shapesByType(type: Class<Circle>): List<ColoredShape2d> {
+    fun shapesByType(type: Class<out Shape2d>): List<Shape2d> {
         return listFigure.filterIsInstance(type)
+    }
+
+    fun addAll(newListFigure: List<T>){
+        newListFigure.forEach{
+            listFigure.add(it)
+        }
+    }
+
+    fun getSorted(typeOfSorting: Comparator<T>): List<T> {
+        return listFigure.sortedWith(typeOfSorting)
     }
 }

@@ -13,7 +13,7 @@ fun main() {
     val square2 = Square(7.0, color2, color2)
 
 
-    val allShapes = ShapeCollector()
+    val allShapes = ShapeCollector(listOf())
     allShapes.addFigure(circle)
     allShapes.addFigure(triangle)
     allShapes.addFigure(rectangle)

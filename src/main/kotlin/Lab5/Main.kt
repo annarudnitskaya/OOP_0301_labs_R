@@ -4,7 +4,7 @@ import lab1.Lab2.Circle
 import lab1.Lab2.Triangle
 import lab1.Lab2.Rectangle
 import lab1.Lab2.Square
-
+import lab1.Lab2.ShapeCollector
 fun main() {
 
     val color1 = Color(255, 255, 255, 60)

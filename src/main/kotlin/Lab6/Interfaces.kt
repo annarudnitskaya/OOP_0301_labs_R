@@ -1,5 +1,6 @@
 package lab1.Lab6
 
+
 interface Shape2d {
     fun calcArea(): Double
 }
