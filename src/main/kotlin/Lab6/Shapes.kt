@@ -5,7 +5,7 @@ import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 import kotlin.math.sqrt
 
-val serializersModule = SerializersModule {
+val serializersMod = SerializersModule {
     polymorphic(ColoredShape2d::class) {
         subclass(Circle::class)
         subclass(Square::class)
