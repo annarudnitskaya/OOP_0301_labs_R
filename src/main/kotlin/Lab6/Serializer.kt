@@ -3,7 +3,8 @@ package lab1.Lab6
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-
+import lab1.Lab2.serializerModule
+import lab1.Lab2.ColoredShape2d
 
 class Serializer {
 

@@ -82,7 +82,7 @@ class ShapeCollector<T: ColoredShape2d>(_listFigure: List<T>) {
         }
     }
 
-    fun getSorted(typeOfSorting: Comparator<T>): List<T> {
+    fun getSorted(typeOfSorting: Comparator< in T>): List<T> {
         return listFigure.sortedWith(typeOfSorting)
     }
 }

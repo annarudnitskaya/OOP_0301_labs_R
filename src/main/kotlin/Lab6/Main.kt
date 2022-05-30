@@ -1,9 +1,11 @@
 
 import lab1.Lab6.*
 import java.io.File
-
-import lab1.Lab2.ColoredShape2d
-import lab1.Lab2.Shape2d
+import lab1.Lab2.Color
+import lab1.Lab2.Circle
+import lab1.Lab2.Triangle
+import lab1.Lab2.Rectangle
+import lab1.Lab2.Square
 
 fun main() {
     val color1 = Color(255, 255, 255, 60)
@@ -15,7 +17,7 @@ fun main() {
     val workSerializer = Serializer()
     println("\nObjects list from file:")
     val workList = workSerializer.deserialization(file.read()).toMutableList()
-//    println(workList)
+  //  println(workList)
     println("\nAdd objects:")
     workList.add(Circle(6.0, color1, color2))
     workList.add(Rectangle(2.3, 4.5, color1, color1))
