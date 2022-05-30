@@ -1,5 +1,9 @@
 package lab1.Lab5
 
+import lab1.Lab2.Color
+import lab1.Lab2.ColoredShape2d
+import lab1.Lab2.Shape2d
+
 
 class ShapeCollector<T: ColoredShape2d>(_listFigure: List<T>) {
     private val listFigure: MutableList<T>
@@ -71,7 +75,7 @@ class ShapeCollector<T: ColoredShape2d>(_listFigure: List<T>) {
         return listFigure.groupBy { it.fillColor }
     }
 
-    fun shapesByType(type: Class<Circle>): List<Circle> {
+    fun shapesByType(type: Class<out Shape2d>): List<Shape2d> {
         return listFigure.filterIsInstance(type)
     }
 
@@ -81,7 +85,7 @@ class ShapeCollector<T: ColoredShape2d>(_listFigure: List<T>) {
         }
     }
 
-    fun getSorted(typeOfSorting: AreaComparator): List<T> {
+    fun getSorted(typeOfSorting: Comparator<T>): List<T> {
         return listFigure.sortedWith(typeOfSorting)
     }
 }

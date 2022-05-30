@@ -1,4 +1,9 @@
 package lab1.Lab5
+import lab1.Lab2.Color
+import lab1.Lab2.Circle
+import lab1.Lab2.Triangle
+import lab1.Lab2.Rectangle
+import lab1.Lab2.Square
 
 fun main() {
 

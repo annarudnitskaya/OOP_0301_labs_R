@@ -2,32 +2,48 @@ package lab1.Lab2
 
 import kotlin.math.sqrt
 
-data class Circle( val rad: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+data class Circle(var rad: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+    init {
+        if (rad <= 0) { throw IllegalArgumentException("Radius should be positive") }
+        this.rad = rad
+    }
     override fun calcArea(): Double {
-        if (rad <= 0) throw IllegalArgumentException("Radius should be positive")
         return 3.14 * rad * rad
     }
 }
 
-data class Square( val side: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+data class Square(var side: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+    init {
+        if (side <= 0) { throw IllegalArgumentException("Side can't be negative") }
+        this.side = side
+    }
     override fun calcArea(): Double {
-        if (side <= 0) throw IllegalArgumentException("Radius can't be negative")
         return side * side
     }
 }
 
-data class Rectangle( val side1: Double, private val side2: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+data class Rectangle(var side1: Double, private var side2: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+    init {
+        if (side1 <= 0 || side2 <= 0) { throw IllegalArgumentException("Sides can't be negative") }
+        this.side1 = side1
+        this.side2 = side2
+    }
     override fun calcArea(): Double {
-        if (side1 <= 0 || side2 <= 0) throw IllegalArgumentException("Sides can't be negative")
         return side1 * side2
     }
 }
 
-data class Triangle( val side1: Double, private val side2: Double, private val side3: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+data class Triangle(var side1: Double, private var side2: Double, private var side3: Double, override val borderColor: Color, override val fillColor: Color) : ColoredShape2d {
+    init {
+        if (side1 + side2 + side3 - 2 * maxOf(side1, side2, side3) <= 0) {
+            throw IllegalArgumentException("Triangle with entered sides doesn't exist")
+        }
+        this.side1 = side1
+        this.side2 = side2
+        this.side3 = side3
+    }
     private val halfPerimeter = (side1 + side2 + side3)/2
     override fun calcArea(): Double {
-        if (side1 <= 0 || side2 <= 0 || side3 <= 0) throw IllegalArgumentException("Sides can't be negative")
-        if (side1 + side2 < side3 || side1 + side3 < side2 || side3 + side2 < side1) throw IllegalArgumentException("There is no such triangle")
         return sqrt(halfPerimeter * (halfPerimeter - side1) * (halfPerimeter - side2) * (halfPerimeter - side3))
     }
 }
