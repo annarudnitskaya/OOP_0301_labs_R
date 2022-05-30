@@ -1,0 +1,52 @@
+[
+    {
+        "type": "Lab6.Circle",
+        "rad": 1.0,
+        "borderColor": {
+            "red": 255,
+            "green": 255,
+            "blue": 255,
+            "transparency": 60
+        },
+        "fillColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "transparency": 40
+        }
+    },
+    {
+        "type": "Lab6.Triangle",
+        "side1": 6.0,
+        "side2": 4.0,
+        "side3": 9.0,
+        "borderColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "transparency": 40
+        },
+        "fillColor": {
+            "red": 255,
+            "green": 255,
+            "blue": 255,
+            "transparency": 60
+        }
+    },
+    {
+        "type": "Lab6.Square",
+        "side": 4.0,
+        "borderColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "transparency": 40
+        },
+        "fillColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "transparency": 40
+        }
+    }
+]
