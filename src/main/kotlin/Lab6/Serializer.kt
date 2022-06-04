@@ -10,7 +10,7 @@ class Serializer {
 
     private val json = Json {
         prettyPrint = true
-        serializersModule = serializersMod
+        serializersModule = serializerModule
     }
 
     fun serialization(list: List<ColoredShape2d>): String {
