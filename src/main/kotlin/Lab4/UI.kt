@@ -75,7 +75,6 @@ class LabyrinthUI : JFrame("Labyrinth"), ModelChangeListener {
 
     private fun createBoardPanel(): Component {
         val gamePanel = JPanel(GridLayout(gameModel.getBoardRow(), gameModel.getBoardCol()))
-
         for (i in 0 until gameModel.getBoardRow()) {
             val buttonsRow = mutableListOf<JButton>()
             for (j in 0 until gameModel.getBoardCol()) {

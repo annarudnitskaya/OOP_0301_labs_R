@@ -67,7 +67,6 @@ class Model {
                     board[player.first - 1][player.second] = Cell.ACTOR
                     state = State.FINISH
                 }
-                else {}
             }
         }
         else if (direction == Direction.MOVE_DOWN) {
@@ -82,8 +81,6 @@ class Model {
                     board[player.first + 1][player.second] = Cell.ACTOR
                     state = State.FINISH
                 }
-                else {}
-
             }
         }
         else if (direction == Direction.MOVE_RIGHT) {
@@ -98,8 +95,6 @@ class Model {
                     board[player.first][player.second + 1] = Cell.ACTOR
                     state = State.FINISH
                 }
-                else {}
-
             }
         }
         else if (direction == Direction.MOVE_LEFT) {
@@ -114,8 +109,6 @@ class Model {
                     board[player.first][player.second - 1] = Cell.ACTOR
                     state = State.FINISH
                 }
-                else {}
-
             }
         }
         else if (direction == Direction.ENDGAME) {state = State.FINISH}
