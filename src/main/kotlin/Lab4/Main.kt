@@ -4,8 +4,8 @@ import javax.swing.SwingUtilities
 
 fun main() {
 
-//    SwingUtilities.invokeLater {
-//        val UI = LabyrinthUI()
-//        UI.isVisible = true
-//    }
+    SwingUtilities.invokeLater {
+        val UI = LabyrinthUI()
+        UI.isVisible = true
+    }
 }
