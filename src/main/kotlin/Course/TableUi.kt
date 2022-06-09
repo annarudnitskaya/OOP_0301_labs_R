@@ -77,7 +77,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
     private fun startButtons(): Component {
         val panel = JPanel().apply {
             add(createButton())
-            add(backButton())
+            add(exitButton())
         }
         return panel
     }
@@ -105,6 +105,15 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
 
         }
         return panel
+    }
+
+    private fun exitButton(): Component{
+        val exit = JButton("Exit")
+        updateFont(exit, 20.0f)
+        exit.addActionListener{
+            System.exit(0)
+        }
+        return exit
     }
 
     private fun deleteButton(ind:Int): Component{

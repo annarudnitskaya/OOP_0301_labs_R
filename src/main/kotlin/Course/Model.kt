@@ -18,7 +18,7 @@ class Contact {
     fun getPhone() = phone
     fun getAddress() = address
     fun getIndex() = ind
-    fun getAllInformation() = "NAME:"+firstName + " " + secondName+"\n"+"N:"+date +"\n"+"TEL;HOME:"+ phone +"\n" +"EMAIL;HOME:"+ email +"\n" +"ADR;TYPE=home:"+ address +"\n"
+    fun getAllInformation() = "N:"+firstName + " " + secondName+"\n"+"BDAY:"+date +"\n"+"TEL;HOME:"+ phone +"\n" +"EMAIL;HOME:"+ email +"\n" +"ADR;TYPE=home:"+ address +"\n"
 
 
     fun changeFirstName(Name: String){
