@@ -113,8 +113,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
             )
 
             if (dialogOption == JOptionPane.OK_OPTION) {
-
-            val ff = forFile()
+            val file = forFile()
             var listAns = mutableListOf<Contact>()
             var i =0
             while(i < size){
@@ -128,7 +127,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                 listAns.add(contact)
                 i++
             }
-            val list = ff.write(listAns)
+            val list = file.write(listAns)
                 System.exit(0)
             }
         }

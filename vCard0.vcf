@@ -1,8 +1,8 @@
 BEGIN:VCARD 
 VERSION:3.0 
 N:Anna Rudnitskaya
-BDAY:13.10.2001
+BDAY:Somewhere
 TEL;HOME:89112823273
-EMAIL;HOME:arr@gmail.com
-ADR;TYPE=home:Somewhere
+EMAIL;HOME:13.10.2001
+ADR;TYPE=home:anjarudnitckaia@gmail.com
 END:VCARD 
