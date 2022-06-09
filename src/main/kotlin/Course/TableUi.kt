@@ -105,6 +105,15 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val exit = JButton("Exit")
         updateFont(exit, 20.0f)
         exit.addActionListener{
+            val dialogOption = JOptionPane.showConfirmDialog(
+                this,
+                "You sure that you want to exit? All changes will be saved.",
+                "Exit",
+                JOptionPane.OK_CANCEL_OPTION
+            )
+
+            if (dialogOption == JOptionPane.OK_OPTION) {
+
             val ff = forFile()
             var listAns = mutableListOf<Contact>()
             var i =0
@@ -120,7 +129,8 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                 i++
             }
             val list = ff.write(listAns)
-            System.exit(0)
+                System.exit(0)
+            }
         }
         return exit
     }
@@ -129,6 +139,14 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val detele = JButton("Delete")
         updateFont(detele, 20.0f)
         detele.addActionListener{
+            val dialogOption = JOptionPane.showConfirmDialog(
+                this,
+                "Delete the contact?",
+                "Delete",
+                JOptionPane.OK_CANCEL_OPTION
+            )
+
+            if (dialogOption == JOptionPane.OK_OPTION) {
             workModel.removeContact(workModel.contacts[ind])
             size--
             var i = 0
@@ -144,36 +162,46 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
             revalidate()
             repaint()
         }
+        }
         return detele
     }
 
     private fun saveButton(flag:Boolean, ind:Int): Component{
         val save = JButton("Save")
         updateFont(save, 20.0f)
-        save.addActionListener{
-            if (!flag) {
-                val cont = Contact()
-                cont.changeFirstName(listContact[0].text)
-                cont.changeSecondName(listContact[1].text)
-                cont.changePhone(listContact[2].text)
-                cont.changeAddress(listContact[3].text)
-                cont.changeEmail(listContact[4].text)
-                cont.changeDate(listContact[5].text)
-                cont.changeIndex(size)
-                workModel.createContact(cont)
-                size++
-            }    else {
-                workModel.contacts[ind].changeFirstName(listContact[0].text)
-                workModel.contacts[ind].changeSecondName(listContact[1].text)
-                workModel.contacts[ind].changePhone(listContact[2].text)
-                workModel.contacts[ind].changeAddress(listContact[3].text)
-                workModel.contacts[ind].changeEmail(listContact[4].text)
-                workModel.contacts[ind].changeDate(listContact[5].text)
-            }
+        save.addActionListener {
+            val dialogOption = JOptionPane.showConfirmDialog(
+                this,
+                "Save the contact?",
+                "Save",
+                JOptionPane.OK_CANCEL_OPTION
+            )
+
+            if (dialogOption == JOptionPane.OK_OPTION) {
+                if (!flag) {
+                    val cont = Contact()
+                    cont.changeFirstName(listContact[0].text)
+                    cont.changeSecondName(listContact[1].text)
+                    cont.changePhone(listContact[2].text)
+                    cont.changeAddress(listContact[3].text)
+                    cont.changeEmail(listContact[4].text)
+                    cont.changeDate(listContact[5].text)
+                    cont.changeIndex(size)
+                    workModel.createContact(cont)
+                    size++
+                } else {
+                    workModel.contacts[ind].changeFirstName(listContact[0].text)
+                    workModel.contacts[ind].changeSecondName(listContact[1].text)
+                    workModel.contacts[ind].changePhone(listContact[2].text)
+                    workModel.contacts[ind].changeAddress(listContact[3].text)
+                    workModel.contacts[ind].changeEmail(listContact[4].text)
+                    workModel.contacts[ind].changeDate(listContact[5].text)
+                }
 //            listContact.clear()
 //            rootPane.contentPane = resubscribe() as Container?
 //            revalidate()
 //            repaint()
+            }
         }
         return save
     }
