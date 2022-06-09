@@ -7,6 +7,7 @@ import java.awt.Container
 import java.awt.GridLayout
 import java.io.FileOutputStream
 import javax.swing.*
+import kotlin.system.exitProcess
 
 private const val GAP = 10
 class TableUi(list: List<Contact>) : JFrame("Phone Book") {
@@ -44,8 +45,8 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         return back
     }
 
-    fun writeToVCard(ind:Int) {
-        val fileName = ("vCard"+ind+".vcf")
+    private fun writeToVCard(ind:Int) {
+        val fileName = ("vCard$ind.vcf")
         val file = File(fileName)
         FileOutputStream(file)
         val person= workModel.contacts[ind].getAllInformation()
@@ -124,8 +125,8 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                 listAns.add(contact)
                 i++
             }
-            val list = file.write(listAns)
-                System.exit(0)
+            file.write(listAns)
+                exitProcess(0)
             }
         }
         return exit
@@ -145,10 +146,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
             if (dialogOption == JOptionPane.OK_OPTION) {
             workModel.removeContact(workModel.contacts[ind])
             size--
-            var i = 0
-            while ( i < ind){
-                i++
-            }
+            var i = ind
             while (i < size){
                 workModel.contacts[i].changeIndex(i)
                 i++

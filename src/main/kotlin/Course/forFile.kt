@@ -8,8 +8,7 @@ class forFile() {
         val file = File("phoneBook.txt").readLines()
         val listContact = mutableListOf<Contact>()
         var perem: String
-        var cout = 0
-        for (i in file){
+        for ((cout, i) in file.withIndex()){
             val contact = Contact()
             perem = i
             contact.changeFirstName(perem.substringBefore(';'))
@@ -30,7 +29,6 @@ class forFile() {
             contact.changeDate(perem.substringBefore(';'))
 
             contact.changeIndex(cout)
-            cout++
 
             listContact.add(contact)
         }
