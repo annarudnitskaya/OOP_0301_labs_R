@@ -17,14 +17,12 @@ internal class BookKtTest {
         )
 
     }
-
     @Test
     fun `test correct parse fun for empty string`() {
         val testBooks = ""
         val testBookList: List<Book>?= parserBooks(testBooks)
         assertEquals(null,testBookList)
     }
-
     @Test
     fun `test correct parse fun for string with name exception`() {
         val testBooks = "1. // Leigh Bardugo // 2012"
@@ -33,7 +31,6 @@ internal class BookKtTest {
         )
         assertEquals(exception.message, "One book has no title")
     }
-
     @Test
     fun `test correct parse fun for string with author exception`() {
         val testBooks = "1. Shadow and Bone //  // 2012"
@@ -42,7 +39,6 @@ internal class BookKtTest {
         )
         assertEquals(exception.message, "One book has no author")
     }
-
     @Test
     fun `test correct parse fun for string with year exception`() {
         val testBooks = "1. Shadow and Bone // Leigh Bardugo // "
@@ -51,7 +47,6 @@ internal class BookKtTest {
         )
         assertEquals(exception.message, "One book has no year")
     }
-
     @Test
     fun `test correct parse fun for string with incorrect year`() {
         val testBooks = "1. Shadow and Bone // Leigh Bardugo // -2 "
@@ -60,7 +55,6 @@ internal class BookKtTest {
         )
         assertEquals(exception.message, "One book has incorrect year")
     }
-
     @Test
     fun `test correct oldestBook fun`() {
         val testBooks = """1. Fathers and Sons // Ivan Turgenev // 1862
@@ -73,7 +67,6 @@ internal class BookKtTest {
             oldestBook(testBookList!!)
         )
     }
-
     @Test
     fun `test correct youngestBook fun`() {
         val testBooks = """1. Fathers and Sons // Ivan Turgenev // 1862
@@ -86,7 +79,6 @@ internal class BookKtTest {
             youngestBook(testBookList!!)
         )
     }
-
     @Test
     fun `test correct longestNameBook fun`() {
         val testBooks = """1. Fathers and Sons // Ivan Turgenev // 1862
@@ -99,7 +91,6 @@ internal class BookKtTest {
             longestNameBook(testBookList!!)
         )
     }
-
     @Test
     fun `test correct shortestNameBook fun`() {
         val testBooks = """1. Fathers and Sons // Ivan Turgenev // 1862
