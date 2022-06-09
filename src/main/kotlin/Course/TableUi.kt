@@ -46,13 +46,10 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
 
     fun writeToVCard(ind:Int) {
         val fileName = ("vCard"+ind+".vcf")
-        var file = File(fileName)
+        val file = File(fileName)
         FileOutputStream(file)
-        var person= workModel.contacts[ind].getAllInformation()
-        File(fileName).appendText("BEGIN:VCARD \n")
-        File(fileName).appendText("VERSION:3.0 \n")
-        File(fileName).appendText("${person}")
-        File(fileName).appendText("END:VCARD \n")
+        val person= workModel.contacts[ind].getAllInformation()
+        File(fileName).appendText("BEGIN:VCARD \nVERSION:3.0 \n${person}END:VCARD \n")
     }
 
     private fun saveToVCardButton(ind:Int): Component{
@@ -114,10 +111,10 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
 
             if (dialogOption == JOptionPane.OK_OPTION) {
             val file = forFile()
-            var listAns = mutableListOf<Contact>()
+            val listAns = mutableListOf<Contact>()
             var i =0
             while(i < size){
-                var contact = Contact()
+                val contact = Contact()
                 contact.changeFirstName(workModel.contacts[i].getFirstName())
                 contact.changeSecondName(workModel.contacts[i].getSecondName())
                 contact.changeDate(workModel.contacts[i].getDate())

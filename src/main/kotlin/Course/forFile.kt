@@ -37,7 +37,7 @@ class forFile() {
         return listContact
     }
     fun write(list: List<Contact>){
-        var file = File("phoneBook.txt")
+        val file = File("phoneBook.txt")
         FileOutputStream(file)
         for (i in list.indices){
             File("phoneBook.txt").appendText(list[i].getFirstName() + ";" + list[i].getSecondName() +";" + list[i].getPhone() +";" + list[i].getAddress()+";" + list[i].getEmail() +";" + list[i].getDate()+";\n")
