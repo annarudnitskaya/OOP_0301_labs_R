@@ -48,10 +48,10 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val fileName = ("vCard"+ind+".vcf")
         var file = File(fileName)
         FileOutputStream(file)
-        var person= workModel.contacts[ind].getAllInformation()
+        val person= workModel.contacts[ind].getAllInformation()
         File(fileName).appendText("BEGIN:VCARD \n")
         File(fileName).appendText("VERSION:3.0 \n")
-        File(fileName).appendText("${person}")
+        File(fileName).appendText("$person")
         File(fileName).appendText("END:VCARD \n")
     }
 
@@ -100,9 +100,8 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val panel = JPanel().apply {
             if (flag) {add(deleteButton(ind)) }
             add(saveButton(flag, ind))
-            add(backButton())
             add(saveToVCardButton(ind))
-
+            add(backButton())
         }
         return panel
     }
@@ -111,7 +110,17 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val exit = JButton("Exit")
         updateFont(exit, 20.0f)
         exit.addActionListener{
-            System.exit(0)
+                val dialogOption = JOptionPane.showConfirmDialog(
+                    this,
+                    "You sure that you want to exit?",
+                    "Exit",
+                    JOptionPane.OK_CANCEL_OPTION
+                )
+
+                if (dialogOption == JOptionPane.OK_OPTION) {
+                    System.exit(0)
+                }
+
         }
         return exit
     }
@@ -120,6 +129,15 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val detele = JButton("Delete")
         updateFont(detele, 20.0f)
         detele.addActionListener{
+            val dialogOption = JOptionPane.showConfirmDialog(
+                this,
+                "Delete the contact?",
+                "Delete",
+                JOptionPane.OK_CANCEL_OPTION
+            )
+
+            if (dialogOption == JOptionPane.OK_OPTION) {
+
             workModel.removeContact(workModel.contacts[ind])
             size--
             var i = 0
@@ -135,6 +153,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
             revalidate()
             repaint()
         }
+        }
         return detele
     }
 
@@ -142,6 +161,14 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val save = JButton("Save")
         updateFont(save, 20.0f)
         save.addActionListener{
+            val dialogOption = JOptionPane.showConfirmDialog(
+                this,
+                "Save the contact?",
+                "Save",
+                JOptionPane.OK_CANCEL_OPTION
+            )
+
+            if (dialogOption == JOptionPane.OK_OPTION) {
             if (!flag) {
                 val cont = Contact()
                 cont.changeFirstName(listContact[0].text)
@@ -165,6 +192,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
 //            rootPane.contentPane = resubscribe() as Container?
 //            revalidate()
 //            repaint()
+        }
         }
         return save
     }
