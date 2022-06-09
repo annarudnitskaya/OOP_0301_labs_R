@@ -6,11 +6,11 @@ import java.io.FileOutputStream
 class forFile() {
     fun read(): List<Contact>{
         val file = File("phoneBook.txt").readLines()
-        var listContact = mutableListOf<Contact>()
+        val listContact = mutableListOf<Contact>()
         var perem: String
         var cout = 0
         for (i in file){
-            var contact = Contact()
+            val contact = Contact()
             perem = i
             contact.changeFirstName(perem.substringBefore(';'))
 
