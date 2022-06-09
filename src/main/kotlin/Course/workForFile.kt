@@ -3,12 +3,12 @@ package lab1.Course
 import java.io.File
 import java.io.FileOutputStream
 
-class forFile() {
-    fun read(): List<Contact>{
+class workForFile() {
+    fun read(): List<Contact> {
         val file = File("phoneBook.txt").readLines()
         val listContact = mutableListOf<Contact>()
         var perem: String
-        for ((cout, i) in file.withIndex()){
+        for ((cout, i) in file.withIndex()) {
             val contact = Contact()
             perem = i
             contact.changeFirstName(perem.substringBefore(';'))
@@ -34,11 +34,12 @@ class forFile() {
         }
         return listContact
     }
-    fun write(list: List<Contact>){
+
+    fun write(list: List<Contact>) {
         val file = File("phoneBook.txt")
         FileOutputStream(file)
-        for (i in list.indices){
-            File("phoneBook.txt").appendText(list[i].getFirstName() + ";" + list[i].getSecondName() +";" + list[i].getPhone() +";" + list[i].getAddress()+";" + list[i].getEmail() +";" + list[i].getDate()+";\n")
+        for (i in list.indices) {
+            File("phoneBook.txt").appendText(list[i].firstName + ";" + list[i].secondName + ";" + list[i].phone + ";" + list[i].address + ";" + list[i].email + ";" + list[i].date + ";\n")
         }
 
     }

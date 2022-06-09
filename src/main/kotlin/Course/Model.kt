@@ -2,38 +2,35 @@ package lab1.Course
 
 
 class Contact {
-    private var firstName: String = ""
-    private var secondName:String = ""
-    private var phone:String = ""
-    private var email: String = ""
-    private var address: String = ""
-    private var ind: Int = 0
-    private var date: String = ""
+    var firstName: String = ""
+    var secondName: String = ""
+    var phone: String = ""
+    var email: String = ""
+    var address: String = ""
+    var ind: Int = 0
+    var date: String = ""
 
-    fun getAllName() = firstName + " " + secondName
-    fun getFirstName() = firstName
-    fun getSecondName() = secondName
-    fun getDate() = date
-    fun getEmail() = email
-    fun getPhone() = phone
-    fun getAddress() = address
-    fun getIndex() = ind
-    fun getAllInformation() = "N:"+firstName + " " + secondName+"\n"+"BDAY:"+date +"\n"+"TEL;HOME:"+ phone +"\n" +"EMAIL;HOME:"+ email +"\n" +"ADR;TYPE=home:"+ address +"\n"
+    fun getAllInformation() =
+        "N:" + firstName + " " + secondName + "\n" + "BDAY:" + date + "\n" + "TEL;HOME:" + phone + "\n" + "EMAIL;HOME:" + email + "\n" + "ADR;TYPE=home:" + address + "\n"
 
 
-    fun changeFirstName(Name: String){
+    fun changeFirstName(Name: String) {
         firstName = Name
     }
-    fun changeSecondName(Name: String){
+
+    fun changeSecondName(Name: String) {
         secondName = Name
     }
-    fun changePhone(number: String){
+
+    fun changePhone(number: String) {
         phone = number
     }
-    fun changeEmail(mail: String){
+
+    fun changeEmail(mail: String) {
         email = mail
     }
-    fun changeAddress(new: String){
+
+    fun changeAddress(new: String) {
         address = new
     }
 
@@ -41,17 +38,21 @@ class Contact {
         ind = i
 
     }
-    fun changeDate(new: String){
+
+    fun changeDate(new: String) {
         date = new
     }
 }
+
 class Model(list: List<Contact>) {
     private val _contact: MutableList<Contact> = list.toMutableList()
     val contacts: List<Contact>
         get() = _contact
+
     fun createContact(contact: Contact) {
         _contact.add(contact)
     }
+
     fun removeContact(contact: Contact) {
         _contact.remove(contact)
     }
