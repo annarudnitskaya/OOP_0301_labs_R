@@ -22,10 +22,10 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         setSize(1000, 500)
         defaultCloseOperation = EXIT_ON_CLOSE
         updateFont(statusLabel, 20.0f)
-        rootPane.contentPane = resubscribe()
+        rootPane.contentPane = startPanel()
     }
 
-    private fun resubscribe(): Container {
+    private fun startPanel(): Container {
         val panel = JPanel(BorderLayout(GAP, GAP)).apply {
             add(statusLabel, BorderLayout.NORTH)
             add(createBoardPanel(), BorderLayout.CENTER)
@@ -39,7 +39,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         val back = JButton("Back")
         back.addActionListener {
             listContact.clear()
-            rootPane.contentPane = resubscribe()
+            rootPane.contentPane = startPanel()
             revalidate()
             repaint()
         }
@@ -60,7 +60,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         saveVCard.addActionListener {
             writeToVCard(ind)
             listContact.clear()
-            rootPane.contentPane = resubscribe()
+            rootPane.contentPane = startPanel()
             revalidate()
             repaint()
         }
@@ -81,7 +81,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         updateFont(create, 20.0f)
         create.addActionListener {
             buttons.clear()
-            rootPane.contentPane = resubscribe()
+            rootPane.contentPane = startPanel()
             rootPane.contentPane.add(changingPanel(false, 0), BorderLayout.CENTER)
             rootPane.contentPane.add(internalButtons(false, 0), BorderLayout.SOUTH)
             revalidate()
@@ -117,8 +117,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
             if (dialogOption == JOptionPane.OK_OPTION) {
                 val file = workForFile()
                 val listAns = mutableListOf<Contact>()
-                var i = 0
-                while (i < size) {
+                for (i in 0 until  size) {
                     val contact = Contact()
                     contact.changeFirstName(workModel.contacts[i].firstName)
                     contact.changeSecondName(workModel.contacts[i].secondName)
@@ -127,7 +126,6 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                     contact.changeEmail(workModel.contacts[i].email)
                     contact.changePhone(workModel.contacts[i].phone)
                     listAns.add(contact)
-                    i++
                 }
                 file.write(listAns)
                 exitProcess(0)
@@ -156,7 +154,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                     i++
                 }
                 listContact.clear()
-                rootPane.contentPane = resubscribe()
+                rootPane.contentPane = startPanel()
                 revalidate()
                 repaint()
             }
@@ -213,7 +211,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                 buttons.add(buttonsList)
                 cellButton.addActionListener {
                     buttons.clear()
-                    rootPane.contentPane = resubscribe()
+                    rootPane.contentPane = startPanel()
                     rootPane.contentPane.add(changingPanel(true, i.ind), BorderLayout.CENTER)
                     rootPane.contentPane.add(internalButtons(true, i.ind), BorderLayout.SOUTH)
                     revalidate()
