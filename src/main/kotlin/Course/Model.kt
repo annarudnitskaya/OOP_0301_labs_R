@@ -1,5 +1,6 @@
 package lab1.Course
 
+
 class Contact {
     private var firstName: String = ""
     private var secondName:String = ""
@@ -17,6 +18,7 @@ class Contact {
     fun getPhone() = phone
     fun getAddress() = address
     fun getIndex() = ind
+    fun getAllInformation() = "NAME:"+firstName + " " + secondName+"\n"+"N:"+date +"\n"+"TEL;HOME:"+ phone +"\n" +"EMAIL;HOME:"+ email +"\n" +"ADR;TYPE=home:"+ address +"\n"
 
 
     fun changeFirstName(Name: String){
@@ -54,3 +56,4 @@ class Model(list: List<Contact>) {
         _contact.remove(contact)
     }
 }
+

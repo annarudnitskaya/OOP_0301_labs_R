@@ -1,9 +1,11 @@
 package lab1.Course
 
+import java.io.File
 import java.awt.BorderLayout
 import java.awt.Component
 import java.awt.Container
 import java.awt.GridLayout
+import java.io.FileOutputStream
 import javax.swing.*
 
 private const val GAP = 10
@@ -15,7 +17,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         private val listContact = mutableListOf<JTextField>()
 
     init {
-        setSize(500, 500)
+        setSize(1000, 500)
         defaultCloseOperation = EXIT_ON_CLOSE
         updateFont(statusLabel, 20.0f)
         rootPane.contentPane = resubscribe() as Container?
@@ -42,11 +44,40 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         return back
     }
 
+    fun writeToVCard(ind:Int) {
+        val fileName = ("vCard"+ind+".vcf")
+        var file = File(fileName)
+        FileOutputStream(file)
+        var person= workModel.contacts[ind].getAllInformation()
+        File(fileName).appendText("BEGIN:VCARD \n")
+        File(fileName).appendText("VERSION:3.0 \n")
+        File(fileName).appendText("${person}")
+        File(fileName).appendText("END:VCARD \n")
+    }
+
+//    fun readFromFile(): String {
+//        if (!File("AllInformation").exists())
+//            throw IllegalArgumentException("File doesn't exist")
+//        return File().readText()
+//    }
+
+    private fun saveToVCardButton(ind:Int): Component{
+        val saveVCard = JButton("Save in vCard-file")
+        saveVCard.addActionListener{
+            writeToVCard(ind)
+            listContact.clear()
+            rootPane.contentPane = resubscribe() as Container?
+            revalidate()
+            repaint()
+        }
+        updateFont(saveVCard, 20.0f)
+        return saveVCard
+    }
+
     private fun startButtons(): Component {
         val panel = JPanel().apply {
             add(createButton())
             add(backButton())
-            // выгрузить
         }
         return panel
     }
@@ -57,7 +88,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         create.addActionListener {
             buttons.clear()
             rootPane.contentPane = resubscribe() as Container?
-            rootPane.contentPane.add(createCreateRefactorPanel(false, 0), BorderLayout.CENTER)
+            rootPane.contentPane.add(changingPanel(false, 0), BorderLayout.CENTER)
             rootPane.contentPane.add(internalButtons(false, 0), BorderLayout.SOUTH)
             revalidate()
             repaint()
@@ -67,9 +98,11 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
 
     private fun internalButtons(flag: Boolean, ind:Int): Component {
         val panel = JPanel().apply {
-            if (flag) add(deleteButton(ind))
+            if (flag) {add(deleteButton(ind)) }
             add(saveButton(flag, ind))
             add(backButton())
+            add(saveToVCardButton(ind))
+
         }
         return panel
     }
@@ -119,14 +152,13 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
                 workModel.contacts[ind].changeEmail(listContact[4].text)
                 workModel.contacts[ind].changePhone(listContact[5].text)
             }
-            listContact.clear()
-            rootPane.contentPane = resubscribe() as Container?
-            revalidate()
-            repaint()
+//            listContact.clear()
+//            rootPane.contentPane = resubscribe() as Container?
+//            revalidate()
+//            repaint()
         }
         return save
     }
-
 
 private fun createBoardPanel(): Component {
             val workPanel = JPanel(GridLayout(size, size, GAP, GAP))
@@ -142,7 +174,7 @@ private fun createBoardPanel(): Component {
                     cellButton.addActionListener {
                         buttons.clear()
                         rootPane.contentPane = resubscribe() as Container?
-                        rootPane.contentPane.add(createCreateRefactorPanel(true, i.getIndex()), BorderLayout.CENTER)
+                        rootPane.contentPane.add(changingPanel(true, i.getIndex()), BorderLayout.CENTER)
                         rootPane.contentPane.add(internalButtons(true, i.getIndex()), BorderLayout.SOUTH)
                         revalidate()
                         repaint()
@@ -153,7 +185,7 @@ private fun createBoardPanel(): Component {
             return workPanel
         }
 
-    private fun createCreateRefactorPanel(flag:Boolean, int: Int): Component {
+    private fun changingPanel(flag:Boolean, int: Int): Component {
         val contact =  if (flag)  workModel.contacts[int]
             else Contact()
         var temp = contact.getFirstName()
@@ -169,17 +201,17 @@ private fun createBoardPanel(): Component {
         temp = contact.getPhone()
         listContact.add(JTextField(temp))
         val panel = JPanel().apply {
-            add(JLabel("Name"))
+            add(JLabel("Name:"))
             add(listContact[0])
-            add(JLabel("Surname"))
+            add(JLabel("Surname:"))
             add(listContact[1])
-            add(JLabel("Date of birth"))
+            add(JLabel("Date of birth:"))
             add(listContact[2])
-            add(JLabel("Address"))
+            add(JLabel("Address:"))
             add(listContact[3])
-            add(JLabel("Emails"))
+            add(JLabel("Emails:"))
             add(listContact[4])
-            add(JLabel("Phone number"))
+            add(JLabel("Phone number:"))
             add(listContact[5])
         }
         panel.layout = BoxLayout(panel, BoxLayout.PAGE_AXIS)
@@ -192,3 +224,4 @@ private fun updateFont(component: JComponent, newFontSize: Float) {
             component.font = derivedFont
         }
 }
+
