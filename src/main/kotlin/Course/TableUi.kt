@@ -112,7 +112,7 @@ class TableUi(list: List<Contact>) : JFrame("Phone Book") {
         exit.addActionListener{
                 val dialogOption = JOptionPane.showConfirmDialog(
                     this,
-                    "You sure that you want to exit?",
+                    "You sure that you want to exit? All changes will be saved.",
                     "Exit",
                     JOptionPane.OK_CANCEL_OPTION
                 )
