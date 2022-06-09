@@ -1,5 +1,6 @@
 package lab1.Lab2
 
+import Lab2.Color
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -18,7 +19,6 @@ internal class ShapeCollectorTest {
         shapse.addFigure(triangle)
         kotlin.test.assertEquals(2, shapse.getSizeList())
     }
-
     @Test
     fun `max area of figure`() {
         val color1 = Color(255, 255, 255, 60)
@@ -29,7 +29,6 @@ internal class ShapeCollectorTest {
         kotlin.test.assertEquals(2, shapse.getSizeList())
         kotlin.test.assertEquals(listOf(triangle), shapse.maxAreaF())
     }
-
     @Test
     fun `min area of figure`() {
         val color1 = Color(255, 255, 255, 60)
@@ -40,7 +39,6 @@ internal class ShapeCollectorTest {
         kotlin.test.assertEquals(2, shapse.getSizeList())
         kotlin.test.assertEquals(listOf(circle), shapse.minAreaF())
     }
-
     @Test
     fun `sum of all shapes`() {
         val color1 = Color(255, 255, 255, 60)
@@ -52,7 +50,6 @@ internal class ShapeCollectorTest {
         kotlin.test.assertEquals(2, shapse.getSizeList())
         kotlin.test.assertEquals(answer, shapse.sumOfAreas())
     }
-
     @Test
     fun `find figure by border color`() {
         val color1 = Color(255, 255, 255, 60)
@@ -64,7 +61,6 @@ internal class ShapeCollectorTest {
         kotlin.test.assertEquals(3, shapse.getSizeList())
         kotlin.test.assertEquals(listOf(circle, circle2), shapse.findByBorderColor(color1))
     }
-
     @Test
     fun `find figure by fill color`() {
         val color1 = Color(255, 255, 255, 60)
@@ -76,7 +72,6 @@ internal class ShapeCollectorTest {
         kotlin.test.assertEquals(3, shapse.getSizeList())
         kotlin.test.assertEquals(listOf(circle2, triangle), shapse.findByFillColor(color2))
     }
-
     @Test
     fun `displaying the entire list of shapes`() {
         val color1 = Color(255, 255, 255, 60)
@@ -87,7 +82,6 @@ internal class ShapeCollectorTest {
         kotlin.test.assertEquals(2, shapse.getSizeList())
         kotlin.test.assertEquals(listOf(circle, triangle), shapse.getListFigure())
     }
-
     @Test
     fun `size of list shapes`() {
         val color1 = Color(255, 255, 255, 60)
@@ -101,7 +95,6 @@ internal class ShapeCollectorTest {
         shapse.addFigure(triangle)
         kotlin.test.assertEquals(2, shapse.getSizeList())
     }
-
     @Test
     fun `grouping by border color`() {
         val color1 = Color(255, 255, 255, 60)
@@ -116,7 +109,6 @@ internal class ShapeCollectorTest {
             shapse.groupedByBorderColor()
         )
     }
-
     @Test
     fun `grouping by fill color`() {
         val color1 = Color(255, 255, 255, 60)
@@ -131,7 +123,6 @@ internal class ShapeCollectorTest {
             shapse.groupedByFillColor()
         )
     }
-
     @Test
     fun `shapes of a specific type`() {
         val color1 = Color(255, 255, 255, 60)

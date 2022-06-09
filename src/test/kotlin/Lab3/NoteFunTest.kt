@@ -15,7 +15,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note),listTest.getAllNotes())
    }
-
     @Test
     fun getAllTextNotes() {
         val listTest = NoteFun()
@@ -25,7 +24,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note),listTest.getAllTextNotes())
     }
-
     @Test
     fun getAllTasks() {
         val listTest = NoteFun()
@@ -35,7 +33,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note),listTest.getAllTasks())
     }
-
     @Test
     fun getAllLinks() {
         val listTest = NoteFun()
@@ -45,7 +42,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note),listTest.getAllLinks())
     }
-
     @Test
     fun createTextNote() {
         val listTest = NoteFun()
@@ -53,7 +49,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note),listTest.getAllTextNotes())
     }
-
     @Test
     fun createTask() {
         val listTest = NoteFun()
@@ -61,7 +56,6 @@ internal class NoteFunTest {
         listTest.createTask("Task Note", LocalDate.of(2022,4,24),"Do homework", LocalDate.of(2022, 5, 8))
         assertEquals(mutableListOf(note),listTest.getAllTasks())
     }
-
     @Test
     fun createLink() {
         val listTest = NoteFun()
@@ -69,7 +63,6 @@ internal class NoteFunTest {
         listTest.createLink("Link Note", LocalDate.of(2022,4,24),"https://github.com/annarudnitskaya/OOP_0301_labs_R")
         assertEquals(mutableListOf(note),listTest.getAllLinks())
     }
-
     @Test
     fun findTitle() {
         val listTest = NoteFun()
@@ -79,7 +72,6 @@ internal class NoteFunTest {
         assertEquals(mutableListOf(note),listTest.findTitle("Text Note"))
 
     }
-
     @Test
     fun getSortedTitle() {
         val listTest = NoteFun()
@@ -91,7 +83,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note2, note, note3),listTest.getSortedTitle())
     }
-
     @Test
     fun getSortedDate() {
         val listTest = NoteFun()
@@ -103,7 +94,6 @@ internal class NoteFunTest {
         listTest.createTextNote("Text Note", LocalDate.of(2022,4,24),"I want to be here")
         assertEquals(mutableListOf(note, note3, note2),listTest.getSortedDate())
     }
-
     @Test
     fun removeNote() {
         val listTest = NoteFun()
@@ -115,7 +105,6 @@ internal class NoteFunTest {
         listTest.removeNote(listTest.getAllNotes()[1])
         assertEquals(mutableListOf(note),listTest.getAllTextNotes())
     }
-
     @Test
     fun findType() {
         val listTest = NoteFun()

@@ -1,8 +1,8 @@
 package lab1.Lab5
 
+import Lab2.Color
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import lab1.Lab2.Color
 import lab1.Lab2.Circle
 import lab1.Lab2.Triangle
 import lab1.Lab2.Rectangle

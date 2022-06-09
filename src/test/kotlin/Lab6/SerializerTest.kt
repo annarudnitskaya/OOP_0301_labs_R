@@ -1,5 +1,6 @@
 package lab1.Lab6
 
+import Lab2.Color
 import lab1.Lab2.*
 import lab1.Lab6.forFile
 import java.io.File
